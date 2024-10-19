@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Details Finder</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Number Details Finder</h1>
+    <form method="POST">
+        <input type="text" name="phone_number" placeholder="Enter Phone Number" required>
+        <button type="submit">Get Details</button>
+    </form>
+
+    {% if details %}
+    <div class="details">
+        <h3>Details:</h3>
+        <p><strong>Phone Number:</strong> {{ details['Phone Number'] }}</p>
+        <p><strong>Country:</strong> {{ details['Country'] }}</p>
+        <p><strong>State:</strong> {{ details['State'] }}</p>
+        <p><strong>Carrier:</strong> {{ details['Carrier'] }}</p>
+        {% if details['Error'] %}
+        <p style="color: red;">Error: {{ details['Error'] }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>
